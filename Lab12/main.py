@@ -22,9 +22,9 @@ class mywindow(QtWidgets.QMainWindow):
     def set_mutext_color(self, color):
         self.mutex.acquire()
         try:
-            print(color)
+    
             self.ui.mutex_label.setStyleSheet(f"background-color:{color};")
-            time.sleep(0.3)        
+            time.sleep(0.1)        
         finally:
             self.mutex.release()    
 
@@ -32,7 +32,7 @@ class mywindow(QtWidgets.QMainWindow):
         self.semaphore.acquire()
         try:
             self.ui.semaphor_label.setStyleSheet(f"background-color:{color};")
-            time.sleep(0.3)        
+            time.sleep(0.1)        
         finally:
             self.semaphore.release()
 
@@ -48,9 +48,9 @@ class mywindow(QtWidgets.QMainWindow):
 
 
     def start_threads(self):
-        threading.Thread(target=self.start_mutext, args=('#0000FF', ), daemon=True).start()
-        threading.Thread(target=self.start_mutext, args=('#ffff00',), daemon=True).start()
-        threading.Thread(target=self.start_mutext, args=('#000000', ), daemon=True).start()
+        threading.Thread(target=self.start_mutext, args=('#0000FF', )).start()
+        threading.Thread(target=self.start_mutext, args=('#ffff00',)).start()
+        threading.Thread(target=self.start_mutext, args=('#000000', )).start()
 
         threading.Thread(target=self.start_semaphor, args=('#ffff00', )).start()
         threading.Thread(target=self.start_semaphor, args=('#0000FF', )).start()
